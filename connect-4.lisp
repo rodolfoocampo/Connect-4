@@ -72,4 +72,23 @@
 	(incf (cadr (nth columna board)))
 )
 
+(defun insert-at-n (n lst elem)
+(cond
+((null lst)(list elem))
+((zerop n) (cons elem (cdr lst)))
+((not(minusp n)) (cons (car lst)
+(insert-at-n (1- n)(cdr lst) elem)))
+(T (write "error"))))
+
+(defun genera-hijos (estado ficha)
+    (setq hijos '())
+    (dotimes (n 6)
+    	(cond ((< (cadr (nth n board)) 5)(setf hijo (insert-at-n (cadr (nth n board)) (car (nth n board)) ficha))
+    	(setq hijo-wrap '())
+    	(push hijo hijo-wrap)
+    	(push (+ 1 (cadr (nth n board))) hijo-wrap)
+    	(push (insert-at-n n board (reverse hijo-wrap)) hijos)))
+    )
+hijos)
+
 
