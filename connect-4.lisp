@@ -107,9 +107,10 @@ hijos)
 		(setq hijos '())
 		
 		(dolist (n (genera-hijos estado 2 hijos))
-			
+		
+			(cond ((not (null n))
 			(setf val (max (alfa-beta n (- depth 1) 0 alfa beta (+ time 1)) val))
-			(cond ((> val alfa) (setf alfa (max alfa val))(cond ((= time 1)(setf columna-tiro-chido i)(setf move n)))))
+			(cond ((> val alfa) (setf alfa (max alfa val))(cond ((= time 1)(setf columna-tiro-chido i)(setf move n)))))))
 			(if (= time 1)(incf i))
 			(if (> alfa beta)(return))
 			
@@ -134,6 +135,6 @@ hijos)
 	)
 columna)
 
-(print (alfa-beta board 10 1 -1000000 1000000 1))
+(print (alfa-beta board 7 1 -1000000 1000000 1))
 (print move)
 (print (find-column board move))
