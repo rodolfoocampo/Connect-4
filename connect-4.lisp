@@ -1,6 +1,7 @@
 (setq board '(((0 0 0 0 0 0 0 0) 0)((0 0 0 0 0 0 0 0) 0)((0 0 0 0 0 0 0 0) 0)
 ((0 0 0 0 0 0 0 0) 0)((0 0 0 0 0 0 0 0) 0)((0 0 0 0 0 0 0 0) 0)) )
  
+
 (defun check4horizontal (estado)
     (setf ultima-ficha nil)
     (setf unos 0)
@@ -9,6 +10,7 @@
     (setf puntos-dos 0)
     (setf TwoInRow 0 OneInRow 0)
  
+	
     (dotimes (i 6)
         (dolist (n estado)
             (case (nth i (car n))
@@ -34,9 +36,9 @@
     (print TwoInRow)
     (print OneInRow)
     (print puntos-dos)
- 
 )
  
+
 (defun check4vertical (state)
 	(setf ultima-ficha nil)
 	(setf unos 0 dos 0)
@@ -67,10 +69,12 @@
 	(print puntaje-dos)
 )
  
+
 (defun tira-en (columna board)
 	(setf (nth (cadr (nth columna board)) (car (nth columna board))) 2)
 	(incf (cadr (nth columna board)))
 )
+
 
 (defun insert-at-n (n lst elem)
 (cond
@@ -80,15 +84,17 @@
 (insert-at-n (1- n)(cdr lst) elem)))
 (T (write "error"))))
 
-(defun genera-hijos (estado ficha)
+
+(defun genera-hijos (board ficha)
     (setq hijos '())
     (dotimes (n 6)
     	(cond ((< (cadr (nth n board)) 5)(setf hijo (insert-at-n (cadr (nth n board)) (car (nth n board)) ficha))
     	(setq hijo-wrap '())
     	(push hijo hijo-wrap)
     	(push (+ 1 (cadr (nth n board))) hijo-wrap)
-    	(push (insert-at-n n board (reverse hijo-wrap)) hijos)))
-    )
+    	(push (insert-at-n n (reverse board) (reverse hijo-wrap)) hijos))
+    	(t (push nil hijos))))
+    
 hijos)
 
 
