@@ -10,7 +10,6 @@
     (setf puntos-dos 0)
     (setf TwoInRow 0 OneInRow 0)
  
-	
     (dotimes (i 6)
         (dolist (n estado)
             (case (nth i (car n))
@@ -33,12 +32,8 @@
         )
         (setf unos 0 dos 0)
     )
-    (print TwoInRow)
-    (print OneInRow)
-    (print puntos-dos)
-)
+(- puntos-dos puntos-uno))
  
-
 (defun check4vertical (state)
 	(setf ultima-ficha nil)
 	(setf unos 0 dos 0)
@@ -65,9 +60,10 @@
         (if (eq OneInRow 4)(incf puntaje-uno 1000))
 		(setf unos 0 dos 0)
 	)
-	(print puntaje-uno)
-	(print puntaje-dos)
-)
+(- puntaje-dos puntaje-uno))
+
+(defun valor-nodo (estado)
+(+ (check4vertical estado) (check4horizontal estado)))
  
 
 (defun tira-en (columna board)
