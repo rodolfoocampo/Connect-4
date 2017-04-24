@@ -1,5 +1,5 @@
-(setq board '(((1 0 0 0 0 0 0 0) 1)((0 0 0 0 0 0 0 0) 0)((0 0 0 0 0 0 0 0) 0)
-((0 0 0 0 0 0 0 0) 0)((0 0 0 0 0 0 0 0) 0)((0 0 0 0 0 0 0 0) 0)) )
+(setq board '(((1 0 0 0 0 0 0) 1)((0 0 0 0 0 0 0) 0)((0 0 0 0 0 0 0) 0)((0 0 0 0 0 0 0) 0)
+((0 0 0 0 0 0 0) 0)((0 0 0 0 0 0 0) 0)((0 0 0 0 0 0 0) 0)) )
  
 
 (defun check4horizontal (estado)
@@ -84,8 +84,8 @@
 
 (defun genera-hijos (board ficha hijos)
 
-    (dotimes (n 6)
-    	(cond ((< (cadr (nth n board)) 5)(setf hijo (insert-at-n (cadr (nth n board)) (car (nth n board)) ficha))
+    (dotimes (n 7)
+    	(cond ((< (cadr (nth n board)) 7)(setf hijo (insert-at-n (cadr (nth n board)) (car (nth n board)) ficha))
     	(setq hijo-wrap '())
     	(push hijo hijo-wrap)
     	(push (+ 1 (cadr (nth n board))) hijo-wrap)
@@ -134,6 +134,6 @@ hijos)
 	)
 columna)
 
-(print (alfa-beta board 6 1 -1000000 1000000 1))
+(print (alfa-beta board 10 1 -1000000 1000000 1))
 (print move)
 (print (find-column board move))
