@@ -93,4 +93,14 @@
     
 hijos)
 
+(defun alfa-beta (estado depth maximizer alfa beta)
+	(if (eq depth 0)
+		(return-from alfa-beta (valor-nodo estado))
+	(if (equal maximizer t)
+		(setf val 0)
+		(setf hijos '())
+		()
+	)
+)
+
 
