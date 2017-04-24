@@ -99,17 +99,16 @@ hijos)
 (defun alfa-beta (estado depth maximizer alfa beta)
     
 	(if (eq depth 0)
-	    (print 10)
 		(return-from alfa-beta (valor-nodo estado)))
 	(cond ((= maximizer 1)
 		(setf val -1000000)
-		
 		(setf hijos '())
 		(genera-hijos estado 2 hijos)
 		
 		(dolist (n hijos)
 			(setf val (max (alfa-beta n (- depth 1) 0 alfa beta) val))
 			(cond ((> val alfa) (setf alfa (max alfa val))(setf tiro-optimo n)))
+			
 			(if (> alfa beta)(return))
 			
 		)(return-from alfa-beta val))
@@ -120,8 +119,8 @@ hijos)
 		(genera-hijos estado 1 hijos)
 		
 		(dolist (n hijos)
-			(setf val (max (alfa-beta n (- depth 1) 1 alfa beta) val))
-			(setf alfa (max alfa val))
+			(setf val (min (alfa-beta n (- depth 1) 1 alfa beta) val))
+			(setf beta (min beta val))
 			(if (> alfa beta)(return))
 			
 		)(return-from alfa-beta val))
