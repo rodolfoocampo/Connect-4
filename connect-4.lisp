@@ -81,8 +81,8 @@
 (T (write "error"))))
 
 
-(defun genera-hijos (board ficha)
-    (setq hijos '())
+(defun genera-hijos (board ficha hijos)
+
     (dotimes (n 6)
     	(cond ((< (cadr (nth n board)) 5)(setf hijo (insert-at-n (cadr (nth n board)) (car (nth n board)) ficha))
     	(setq hijo-wrap '())
