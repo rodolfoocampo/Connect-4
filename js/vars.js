@@ -13,7 +13,7 @@
 //        reader friendly).
 var config = {
         blackPlayerName: "Jugador 1",
-        redPlayerName: "Jugador 2",
+        redPlayerName: "AI",
         startingPlayer: "black", // Choose 'black' or 'red'.
         takenMsg: "Esta posición está ocupada, tira de nuevo.",
         drawMsg: "¡Empate!.",
@@ -34,3 +34,5 @@ var board = [[0,0,0,0,0,0,0],
 
 // Set the starting player.
 var currentPlayer = config.startingPlayer;
+
+

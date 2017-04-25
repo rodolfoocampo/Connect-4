@@ -40,6 +40,29 @@ $(document).ready(function() {
             return;
         }
 
+        //Aquí va el tiro del AI
+        espera();
+
+        tiraAi(board);
+
+        printBoard();
+
+        // Check to see if we have a winner.
+        if (verticalWin() || horizontalWin() || diagonalWin()) {
+            // Destroy our click listener to prevent further play.
+            $('.board button').unbind('click');
+            $('.prefix').text(config.winPrefix);
+            $('.play-again').show("slow");
+            return;
+
+        } else if (gameIsDraw()) {
+            // Destroy our click listener to prevent further play.
+            $('.board button').unbind('click');
+            $('.message').text(config.drawMsg);
+            $('.play-again').show("slow");
+            return;
+        }
+
         changePlayer();
     });
 

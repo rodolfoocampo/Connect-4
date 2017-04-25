@@ -289,3 +289,33 @@ function diagonalWin() {
     // No diagonal wins found. Return false.
     return false;
 }
+
+var check = function(){
+    if(condition){
+        // run when condition is met
+    }
+    else {
+        setTimeout(check, 1000); // check again in a second
+    }
+}
+
+function espera(){
+    setTimeout(check, 1000);
+}
+
+
+
+function tiraAi(estadoActual) { 
+    var x = Math.floor(Math.random()*6),
+        y = 0;
+    dropToBottom(x,y);
+    addDiscToBoard(currentPlayer, x, y);
+  /*var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     addDiscToBoard(currentPlayer, x, y);
+    }
+  };
+  xhttp.open("GET", "dummy.lisp", true);
+  xhttp.send();*/
+}
