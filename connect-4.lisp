@@ -1,4 +1,4 @@
-(setq board '(((2 0 0 0 0 0) 1)((1 2 0 0 0 0) 2)((1 1 2 0 0 0) 3)((1 1 1 2 0 0) 4)
+(setq board '(((2 2 2 2 0 0) 4)((1 2 2 0 0 0) 3)((1 2 0 0 0 0) 2)((2 0 0 0 0 0) 1)
 ((0 0 0 0 0 0) 0)((0 0 0 0 0 0) 0)((0 0 0 0 0 0) 0)) )
  
  
@@ -229,8 +229,3 @@ hijos)
 		(if (not (equal (nth n list1) (nth n list2)))(setq columna n))
 	)
 columna)
- 
-(print (traverse-diagonal-d2 board))
-(print (alfa-beta board 7 1 -1000000 1000000 1))
-(print move)
-(print (find-column board move))
