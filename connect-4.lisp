@@ -1,5 +1,5 @@
-(setq board '(((2 2 2 2 0 0) 4)((1 2 2 0 0 0) 3)((1 2 0 0 0 0) 2)((2 0 0 0 0 0) 1)
-((0 0 0 0 0 0) 0)((0 0 0 0 0 0) 0)((0 0 0 0 0 0) 0)) )
+(setq board '(((2 2 2 2 1 2) 6)((1 2 2 1 1 0) 5)((1 2 1 1 0 0) 4)((2 1 2 0 0 0) 3)
+((1 2 0 0 0 0) 2)((1 0 0 0 0 0) 1)((2 0 0 0 0 0) 1)) )
  
  
 (defun check4horizontal (estado)
@@ -183,6 +183,7 @@
                     ((and (> (+ (- 6 n) i) 0) (eq 0 (nth (+ (- 6 n) i) (car (nth n estado)))) (eq 0 (nth (- (+ (- 6 n) i) 1) (car (nth n estado)))) (setf unos 0) (setf dos 0))))
                 (cond ((eq 4 unos) (incf puntos-uno) (decf unos)))
                 (cond ((eq 4 dos) (incf puntos-dos) (decf dos)))
+                (decf n)
                 (when (< n (+ i 1))(return))
         )
     )
@@ -259,3 +260,5 @@ hijos)
 		(if (not (equal (nth n list1) (nth n list2)))(setq columna n))
 	)
 columna)
+
+(print (traverse-diagonal-a2 board))
