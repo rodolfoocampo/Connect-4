@@ -305,13 +305,17 @@ function espera(){
 
 
 
-function tiraAi(estadoActual) {
-  var xhttp = new XMLHttpRequest();
+function tiraAi(estadoActual) { 
+    var x = Math.floor(Math.random()*6),
+        y = 0;
+    dropToBottom(x,y);
+    addDiscToBoard(currentPlayer, x, y);
+  /*var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
      addDiscToBoard(currentPlayer, x, y);
     }
   };
-  xhttp.open("GET", "ajax_info.txt", true);
-  xhttp.send();
+  xhttp.open("GET", "dummy.lisp", true);
+  xhttp.send();*/
 }
